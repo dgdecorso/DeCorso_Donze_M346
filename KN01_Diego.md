@@ -24,3 +24,9 @@ Da die Software als normales Programm auf dem Betriebssystem installiert ist und
 
 
 <img width="1337" height="436" alt="image" src="https://github.com/user-attachments/assets/fe394e96-d334-4575-946e-bdbf37d83b96" />
+
+Weisen Sie Ihrer VM mehr Prozessoren zu, als Ihr Host-System logische Prozessoren hat. Starten Sie die VM und rufen Sie in der Konsole den Befehl  lscpu | grep "CPU(s)" auf.  (Screenshot für Abgabe nicht vergessen). Es ist möglich, dass Sie nicht mehr Prozessoren hinzufügen können als Ihr Host-System hat. Dann machen Sie den Screenshot der entsprechenden Fehlermeldung oder Einschränkung.
+<img width="1170" height="655" alt="Screenshot 2025-11-18 103228" src="https://github.com/user-attachments/assets/5843e7e1-14f6-482c-9413-556356ff65af" />
+
+
+Machen Sie die gleichen Schritte wie eben mit der Ressource RAM. Der Linux Befehl zum Auslesen ist `free -h. Es ist möglich, dass Sie nicht mehr RAM hinzufügen können als Ihr Host-System hat. Dann machen Sie den Screenshot der entsprechenden Fehlermeldung oder Einschränkung.

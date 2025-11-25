@@ -31,4 +31,6 @@ Weisen Sie Ihrer VM mehr Prozessoren zu, als Ihr Host-System logische Prozessore
 
 
 Machen Sie die gleichen Schritte wie eben mit der Ressource RAM. Der Linux Befehl zum Auslesen ist `free -h. Es ist möglich, dass Sie nicht mehr RAM hinzufügen können als Ihr Host-System hat. Dann machen Sie den Screenshot der entsprechenden Fehlermeldung oder Einschränkung.
-<img width="855" height="269" alt="image" src="https://github.com/user-attachments/assets/5fb8bc2c-185a-4bf0-b9e4-114d80b540d6" />
+
+
+<img width="944" height="170" alt="image" src="https://github.com/user-attachments/assets/fc64c605-8d1f-4118-a1ff-179f87f6662e" />

@@ -30,7 +30,5 @@ Weisen Sie Ihrer VM mehr Prozessoren zu, als Ihr Host-System logische Prozessore
 <img width="855" height="269" alt="Screenshot 2025-11-25 103533" src="https://github.com/user-attachments/assets/2610efb1-9baa-4cea-8886-8bc7da9461e3" />
 
 
-Machen Sie die gleichen Schritte wie eben mit der Ressource RAM. Der Linux Befehl zum Auslesen ist `free -h. Es ist möglich, dass Sie nicht mehr RAM hinzufügen können als Ihr Host-System hat. Dann machen Sie den Screenshot der entsprechenden Fehlermeldung oder Einschränkung.
-
 
 <img width="944" height="170" alt="image" src="https://github.com/user-attachments/assets/fc64c605-8d1f-4118-a1ff-179f87f6662e" />

@@ -1,0 +1,17 @@
+#cloud-config                           # Kennzeichnet die Datei als Cloud-Init Konfiguration
+
+users: # Definition der Benutzer, die erstellt werden sollen
+  - name: ubuntu # Standardbenutzername für Ubuntu-Instanzen
+    groups: [users, admin] # Benutzer wird zur Gruppe 'users' & 'admin' hinzugefügt (admin = sudo-Gruppe)
+    shell: /bin/bash # Die Standardshell des Benutzers
+    sudo: ALL=(ALL) NOPASSWD:ALL # Benutzer darf alle sudo-Befehle ohne Passwort ausführen
+    ssh_authorized_keys: # Liste der erlaubten SSH-Public Keys für Login
+      - ssh-rsa # Dein öffentlicher SSH-Key, der Login mit vorname1.pem erlaubt
+
+ssh_pwauth: false # Passwort-Login via SSH deaktiviert → Login nur mit Key möglich
+disable_root: false # Root-Benutzer bleibt aktiviert (aber SSH-Login ist trotzdem standardmäßig gesperrt)
+package_update: true # Führt automatisch "apt update" beim Start aus
+
+packages: # Liste der Pakete, die automatisch installiert werden
+  - curl # Tool zum Abrufen von Daten über HTTP/HTTPS
+  - wget # Tool zum Herunterladen von Dateien über HTTP/HTTPS/FTP

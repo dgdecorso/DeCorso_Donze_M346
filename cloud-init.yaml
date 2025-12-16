@@ -6,7 +6,7 @@ users: # Definition der Benutzer, die erstellt werden sollen
     shell: /bin/bash # Die Standardshell des Benutzers
     sudo: ALL=(ALL) NOPASSWD:ALL # Benutzer darf alle sudo-Befehle ohne Passwort ausführen
     ssh_authorized_keys: # Liste der erlaubten SSH-Public Keys für Login
-      - ssh-rsa # Dein öffentlicher SSH-Key, der Login mit vorname1.pem erlaubt
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWA2E7kmnVYtZjYvf2ObugEveyzPxrZU0QRPhJcRbKKJdWD2xlJ9C00XKyB2PpMLLYvln/r2gBqXqhiTXBXX8ojLr3y65hL0ovj84R0UZsJN1ae72l0VeSVBtCk16DkU42e6qZaU4cksMJXMp+LUqt2WZ1UvovEX1WeHPJ55vzvFqII/TSFZARpptykzci4Kio2f0Sl6e9segMJSRImWvg3OZf4bY0TrFWLw3anh2ULnJLek7kjxAXjS3TpDBDYsmvE3mgdXE32+AGDJO5mwhGJs6aFClSVuR2QDP5WKlJtl4vLUuMZr+uKD5GjnWrq3honYZIc4BrvKY2sdz3FuC9
 
 ssh_pwauth: false # Passwort-Login via SSH deaktiviert → Login nur mit Key möglich
 disable_root: false # Root-Benutzer bleibt aktiviert (aber SSH-Login ist trotzdem standardmäßig gesperrt)

@@ -1,0 +1,18 @@
+#cloud-config                           # Kennzeichnet die Datei als Cloud-Init Konfiguration
+
+users: # Definition der Benutzer, die erstellt werden sollen
+  - name: ubuntu # Standardbenutzername fuer Ubuntu-Instanzen
+    groups: [users, admin] # Benutzer wird zur Gruppe 'users' & 'admin' hinzugefuegt (admin = sudo-Gruppe)
+    shell: /bin/bash # Die Standardshell des Benutzers
+    sudo: ALL=(ALL) NOPASSWD:ALL # Benutzer darf alle sudo-Befehle ohne Passwort ausfuehren
+    ssh_authorized_keys: # Liste der erlaubten SSH-Public Keys fuer Login
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWA2E7kmnVYtZjYvf2ObugEveyzPxrZU0QRPhJcRbKKJdWD2xlJ9C00XKyB2PpMLLYvln/r2gBqXqhiTXBXX8ojLr3y65hL0ovj84R0UZsJN1ae72l0VeSVBtCk16DkU42e6qZaU4cksMJXMp+LUqt2WZ1UvovEX1WeHPJ55vzvFqII/TSFZARpptykzci4Kio2f0Sl6e9segMJSRImWvg3OZf4bY0TrFWLw3anh2ULnJLek7kjxAXjS3TpDBDYsmvE3mgdXE32+AGDJO5mwhGJs6aFClSVuR2QDP5WKlJtl4vLUuMZr+uKD5GjnWrq3honYZIc4BrvKY2sdz3FuC9
+        AAAAB3NzaC1yc2EAAAADAQABAAABAQCpYQGN6ZsQ+5UJzDz05HogRp0sTBfaore2SjtIpyIc0hyHRQMjw6zeG7+BHglRej/2nXKkRVvXfAzzYQoNxvh38ZcXaqp600UQ1T8zmlU700jvSBew9/UxyvGC9w0iClq/73tMX7k38dUEJTrNVhatHlZYdjbDxKp6mwIFiFpDQnyz3FKfc26gl+wF5DFCcIiRQyIS7iG5G+3drBWwt7FNYxAgcUHZCCx9cyOJw8VqOB0JxvztBXbOS2PJINAaa4jpGIP4n+iLhGY0q87fizLFEz9A8MX3hQVqLXOH1XDtQybv+J4qOOYSAr58ASEkpYxZyJyRxnPfXJyCPs0keIvlkn02-keypair1
+
+ssh_pwauth: false # Passwort-Login via SSH deaktiviert  Login nur mit Key moeglich
+disable_root: false # Root-Benutzer bleibt aktiviert (aber SSH-Login ist trotzdem standardmaeßig gesperrt)
+package_update: true # Fuehrt automatisch "apt update" beim Start aus
+
+packages: # Liste der Pakete, die automatisch installiert werden
+  - curl # Tool zum Abrufen von Daten ueber HTTP/HTTPS
+  - wget # Tool zum Herunterladen von Dateien ueber HTTP/HTTPS/FTP

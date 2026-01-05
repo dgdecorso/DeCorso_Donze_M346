@@ -1,0 +1,71 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+
+packages:
+  - apache2
+  - php
+  - libapache2-mod-php
+  - php-mysql
+  - adminer
+  - ufw
+
+write_files:
+  - path: /var/www/html/index.html
+    permissions: "0644"
+    content: |
+      <!doctype html>
+      <html>
+        <head><meta charset="utf-8"><title>KN04 Web</title></head>
+        <body>
+          <h1>KN04 Webserver</h1>
+          <ul>
+            <li><a href="/info.php">info.php</a></li>
+            <li><a href="/db.php">db.php</a></li>
+            <li><a href="/adminer/">Adminer</a></li>
+          </ul>
+        </body>
+      </html>
+
+  - path: /var/www/html/info.php
+    permissions: "0644"
+    content: |
+      <?php phpinfo(); ?>
+
+  - path: /var/www/html/db.php
+    permissions: "0644"
+    content: |
+      <?php
+      $db_host = "172.31.27.194";              // <-- HIER DB Private IP einsetzen
+      $db_name = "appdb";
+      $db_user = "admin";
+      $db_pass = "123456"; // <-- MUSS gleich wie auf DB sein
+
+      mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+      try {
+        $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name, 3306);
+        $mysqli->set_charset("utf8mb4");
+
+        $res = $mysqli->query("SELECT NOW() AS now_time");
+        $row = $res->fetch_assoc();
+
+        echo "<h1>DB Verbindung OK</h1>";
+        echo "<p>Serverzeit: " . htmlspecialchars($row["now_time"]) . "</p>";
+        echo "<p>Host: " . htmlspecialchars($db_host) . "</p>";
+      } catch (Throwable $e) {
+        http_response_code(500);
+        echo "<h1>DB Verbindung FEHLER</h1>";
+        echo "<pre>" . htmlspecialchars($e->getMessage()) . "</pre>";
+      }
+      ?>
+
+runcmd:
+  # Adminer in Apache aktivieren (Auftrag fordert a2enconf)
+  - a2enconf adminer
+  - systemctl enable --now apache2
+  - systemctl restart apache2
+
+  # Firewall
+  - ufw allow OpenSSH
+  - ufw allow "Apache Full"
+  - ufw --force enable

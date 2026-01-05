@@ -1,0 +1,37 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+
+packages:
+  - mariadb-server
+  - ufw
+
+write_files:
+  - path: /root/vars-db.sh
+    permissions: "0600"
+    content: |
+      WEB_PRIVATE_IP="172.31.31.118"         # <-- HIER Web Private IP einsetzen
+      DB_NAME="appdb"
+      DB_USER="admin"
+      DB_PASS="123456"  # <-- Passwort wählen/übernehmen wie in KN03
+
+runcmd:
+  # MariaDB starten + aktivieren
+  - systemctl enable --now mariadb
+
+  # Bind-Address für externe Verbindungen öffnen (Auftrag fordert genau diesen sed)
+  - sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+  # Kontrolle für Screenshot/Check (Key finden)
+  - grep -nE '^(bind-address|port)\b' /etc/mysql/mariadb.conf.d/50-server.cnf || true
+
+  # DB/User anlegen (nur Zugriff vom Webserver)
+  - bash -lc 'source /root/vars-db.sh; mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`; CREATE USER IF NOT EXISTS '\''${DB_USER}'\''@'\''${WEB_PRIVATE_IP}'\'' IDENTIFIED BY '\''${DB_PASS}'\''; GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '\''${DB_USER}'\''@'\''${WEB_PRIVATE_IP}'\''; FLUSH PRIVILEGES;"'
+
+  # Service neu starten, damit bind-address greift
+  - systemctl restart mariadb
+
+  # Firewall: SSH erlauben + 3306 nur vom Webserver
+  - ufw allow OpenSSH
+  - bash -lc 'source /root/vars-db.sh; ufw allow from "${WEB_PRIVATE_IP}" to any port 3306 proto tcp'
+  - ufw --force enable

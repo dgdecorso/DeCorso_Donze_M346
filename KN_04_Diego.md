@@ -133,6 +133,8 @@ ubuntu@ip-172-31-31-118:~$
 <img width="2237" height="79" alt="image" src="https://github.com/user-attachments/assets/0a42286e-8dd5-43a0-87c3-0c4b3f3c4432" />
 <img width="2153" height="483" alt="image" src="https://github.com/user-attachments/assets/dcd8cb45-3508-49c7-96ac-e9deee14a259" />
 <img width="2938" height="962" alt="image" src="https://github.com/user-attachments/assets/2be5b1f8-ec8e-4763-8604-c7e52154c0eb" />
+<img width="2507" height="1179" alt="image" src="https://github.com/user-attachments/assets/88e17d4e-6718-429c-862a-4769cb628020" />
+<img width="1691" height="574" alt="image" src="https://github.com/user-attachments/assets/60f6cb00-a6b1-457b-ba27-c6b1e8a7ced3" />
 
 
 

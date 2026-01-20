@@ -8,7 +8,7 @@ Ein Subnetz ist ein Teilbereich (ein “Ausschnitt”) des IP-Ranges der VPC. Je
 
 Public IP vs. Private IP
 
-Private IP: interne Adresse innerhalb der VPC. Sie wird nur im AWS-Netz geroutet (zwischen Instanzen/Subnets/VPC-Komponenten). Sie ist ideal für interne Services wie Datenbanken.
+Private IP: interne Adresse innerhalb der VPC. Sie wird nur im AWS-Netz geroutet (zwischen Instanzen/Subnets/VPC-Komponenten). Sie ist gut für interne Services wie Datenbanken.
 
 Public IP: öffentlich erreichbare Adresse im Internet. Damit eine Instanz von außen erreichbar ist, braucht sie (a) eine public IP und (b) passende Routes (z. B. Subnetz-Route zum Internet Gateway) und (c) passende Security-Group-Regeln.
 

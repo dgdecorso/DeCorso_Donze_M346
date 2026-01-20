@@ -11,3 +11,7 @@ Public IP vs. Private IP
 Private IP: interne Adresse innerhalb der VPC. Sie wird nur im AWS-Netz geroutet (zwischen Instanzen/Subnets/VPC-Komponenten). Sie ist ideal für interne Services wie Datenbanken.
 
 Public IP: öffentlich erreichbare Adresse im Internet. Damit eine Instanz von außen erreichbar ist, braucht sie (a) eine public IP und (b) passende Routes (z. B. Subnetz-Route zum Internet Gateway) und (c) passende Security-Group-Regeln.
+
+
+
+<img width="2600" height="500" alt="image" src="https://github.com/user-attachments/assets/d6d4e86e-15d0-4396-a39a-9c8156303c50" />

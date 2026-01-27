@@ -1,1 +1,2 @@
 Ein Reverse Proxy ist ein Server (z. B. Nginx), der Requests von Clients entgegennimmt und sie an einen internen Dienst weiterleitet. Der Client sieht dabei nur den Reverse Proxy (z. B. Port 80), während die eigentliche Applikation intern auf einem anderen Port läuft (z. B. 5000/5001). Dadurch kann man Ports “verstecken”, TLS zentral machen und später mehrere Instanzen hinter einem Endpoint betreiben.
+<img width="2414" height="1221" alt="image" src="https://github.com/user-attachments/assets/28187e04-efc3-4605-b1ac-55dd797b2765" />
